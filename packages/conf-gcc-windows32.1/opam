@@ -1,0 +1,6 @@
+opam-version: "1.2"
+maintainer: "whitequark@whitequark.org"
+build: [
+  ["sh" "-exc" "${TOOLPREF32-i686-w64-mingw32-}gcc --version"]
+  ["sh" "-c" "echo \"prefix: \\\"${TOOLPREF32-i686-w64-mingw32-}\\\"\" >conf-gcc-windows32.config"]
+]

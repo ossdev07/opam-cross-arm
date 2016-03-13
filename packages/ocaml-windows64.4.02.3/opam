@@ -1,0 +1,28 @@
+opam-version: "1.2"
+maintainer: "whitequark@whitequark.org"
+patches: [
+  "patches/ar-fix.patch"
+  "patches/ocamldoc.patch"
+  "patches/install_distrib.patch"
+  "patches/install-ocamlrun.patch"
+]
+substs: [
+  "config/Makefile"
+  "windows.conf"
+]
+build: [
+  [make "-f" "Makefile.nt" "world" "opt" "install"]
+  ["./install.sh" "%{prefix}%"]
+]
+remove: [
+  ["./remove.sh" "%{prefix}%"]
+]
+depends: [
+  "ocamlfind" {>= "1.5.4"}
+  "conf-gcc-windows64"
+  "flexdll-windows"
+]
+conflicts: [
+  "ocaml-windows32"
+]
+available: [ ocaml-version = "4.02.3" & arch = "x86_64" ]
