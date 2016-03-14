@@ -38,14 +38,16 @@ Install the compiler:
 The compiler version is selected automatically based on the current OPAM switch;
 either ocaml-windows32 or ocaml-windows64 can be installed in any single one.
 
-Alternatively, install the 32-bit or 64-bit compiler explicitly:
+Alternatively, specify the path to the C toolchain explicitly:
 
-    TOOLPREF32=i686-w64-mingw32- opam install ocaml-windows32
-    TOOLPREF64=x86_64-w64-mingw32- opam install ocaml-windows64
+    TOOLPREF32=~/mxe/usr/bin/i686-w64-mingw32.static- opam install ocaml-windows
+    TOOLPREF64=~/mxe/usr/bin/x86_64-w64-mingw32.static- opam install ocaml-windows
 
 The options have the following meaning:
 
-  * `TOOLPREF32` and `TOOLPREF64` specify the compiler path prefix. The tools named `${TOOLPREF*}gcc`, `${TOOLPREF*}as`, `${TOOLPREF*}ar`, `${TOOLPREF*}ranlib` and `${TOOLPREF*}ld` must be possible to locate via `PATH`. The values above are the defaults and can be omitted.
+  * `TOOLPREF32` and `TOOLPREF64` specify the compiler path prefix. The tools named `${TOOLPREF*}gcc`, `${TOOLPREF*}as`, `${TOOLPREF*}ar`, `${TOOLPREF*}ranlib` and `${TOOLPREF*}ld` must be possible to locate via `PATH`.
+
+    The values above are suitable for use with the [MXE environment](http://mxe.cc) located in `~/mxe` after running `make gcc`.
 
 The `TOOLPREF*` options are recorded inside the `conf-gcc-windows*` packages, so make sure to reinstall those if you wish to switch to a different toolchain. Otherwise, it is not necessary to supply them while upgrading the `ocaml-windows*` packages.
 
