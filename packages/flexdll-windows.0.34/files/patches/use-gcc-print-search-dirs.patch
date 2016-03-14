@@ -24,8 +24,8 @@
 +
  let setup_toolchain () =
    let mingw_libs pre =
-     gcc := pre ^ "-gcc";
-     objdump := pre ^ "-objdump";
+     gcc := pre ^ "gcc";
+     objdump := pre ^ "objdump";
 -    search_path :=
 -      !dirs @
 -      [
