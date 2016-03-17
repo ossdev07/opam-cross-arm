@@ -1,0 +1,21 @@
+diff --git a/Makefile.nt b/Makefile.nt
+index 9666b7b..979695a 100644
+--- a/Makefile.nt
++++ b/Makefile.nt
+@@ -266,10 +266,12 @@ installbyt:
+ 	if test -n "$(WITH_OCAMLBUILD)"; then (cd ocamlbuild; $(MAKE) install); \
+ 	   else :; fi
+ 	cp config/Makefile $(INSTALL_LIBDIR)/Makefile.config
+-	cp README $(INSTALL_DISTRIB)/Readme.general.txt
+-	cp README.win32 $(INSTALL_DISTRIB)/Readme.windows.txt
+-	cp LICENSE $(INSTALL_DISTRIB)/License.txt
+-	cp Changes $(INSTALL_DISTRIB)/Changes.txt
++	if test -n "$(INSTALL_DISTRIB)"; then \
++	   cp README $(INSTALL_DISTRIB)/Readme.general.txt; \
++	   cp README.win32 $(INSTALL_DISTRIB)/Readme.windows.txt; \
++	   cp LICENSE $(INSTALL_DISTRIB)/License.txt; \
++	   cp Changes $(INSTALL_DISTRIB)/Changes.txt; \
++	fi
+ 
+ # Installation of the native-code compiler
+ installopt:

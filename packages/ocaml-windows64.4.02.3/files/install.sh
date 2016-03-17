@@ -1,1 +1,18 @@
-../../ocaml-windows32.4.02.3/files/install.sh
+#!/bin/sh -e
+
+PREFIX="$1"
+
+for bin in ocamlc ocamlopt ocamlcp ocamlmklib ocamlmktop ocamldoc ocamldep; do
+  cat >"${PREFIX}/windows-sysroot/bin/${bin}" <<END
+#!/bin/sh
+${PREFIX}/bin/ocamlrun "${PREFIX}/windows-sysroot/bin/${bin}.exe" "\$@"
+END
+  chmod +x "${PREFIX}/windows-sysroot/bin/${bin}"
+done
+
+for pkg in bigarray bytes compiler-libs dynlink findlib graphics num num-top ocamlbuild stdlib str threads unix; do
+  cp -r "${PREFIX}/lib/${pkg}" "${PREFIX}/windows-sysroot/lib/"
+done
+
+mkdir -p "${PREFIX}/lib/findlib.conf.d"
+cp windows.conf "${PREFIX}/lib/findlib.conf.d"
