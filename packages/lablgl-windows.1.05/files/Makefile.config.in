@@ -1,0 +1,23 @@
+CAMLC = ocamlfind ocamlc
+CAMLOPT = ocamlfind ocamlopt
+LIBRARIAN = ocamlfind ocamlmklib -verbose -ocamlc ocamlc -ocamlopt ocamlopt
+
+OCAMLDIR = %{prefix}%/windows-sysroot
+BINDIR = $(OCAMLDIR)/bin
+DLLDIR = $(OCAMLDIR)/lib/stublibs
+INSTALLDIR = $(OCAMLDIR)/lib/lablgl
+
+GLINCLUDES = -DHAS_GLEXT_H -DGL_GLEXT_PROTOTYPES -DGLU_VERSION_1_3
+GLLIBS = -lglu32 -lopengl32
+GLLIBS0 = $(GLLIBS)
+GLUTLIBS = -lglut32
+GLUTLIBS0 = $(GLUTLIBS)
+
+RANLIB = :
+
+XE = .exe
+XS = .dll
+
+TOGL_WS = TOGL_WGL
+
+COPTS = -c -O -DHAS_SYS_TIME

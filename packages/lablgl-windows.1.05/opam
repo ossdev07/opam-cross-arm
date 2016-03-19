@@ -1,0 +1,23 @@
+opam-version: "1"
+maintainer: "whitequark@whitequark.org"
+patches: ["patches/ocamlmktop.patch"]
+substs: ["Makefile.config"]
+build: [
+  ["mkdir" "-p" bin]
+  [make "-C" "src" "tools" "XE="]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "glut"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "glutopt"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install" "-C" "src"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install" "-C" "LablGlut/src"]
+]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "lablgl"]]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+  "camlp4" {build}
+]
+depexts: [
+  [["mxe"] ["freeglut"]]
+]

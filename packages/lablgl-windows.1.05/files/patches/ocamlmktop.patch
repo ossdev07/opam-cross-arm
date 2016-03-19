@@ -1,0 +1,11 @@
+--- a/LablGlut/src/Makefile  2013-09-20 10:50:36.000000000 +0000
++++ b/LablGlut/src/Makefile   2016-03-19 02:51:13.429957929 +0000
+@@ -14,7 +14,7 @@
+ OPTOBJS = $(LIBOBJS:.cmo=.cmx)
+ COBJS =	  wrap_glut$(XO)
+ 
+-all: 	lib lablgluttop$(XE) lablglut$(XB)
++all: 	lib lablglut$(XB)
+ 
+ opt:	libopt
+ 
