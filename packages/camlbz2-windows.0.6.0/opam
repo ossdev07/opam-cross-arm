@@ -11,8 +11,9 @@ build: [
 install: [
   ["ocamlfind" "-toolchain" "windows" "install"
                "bz2" "-patch-version" version "META"
-               "bz2.mli" "bz2.cmi" "bz2.cmti" "bz2.cmt"
-               "bz2.cma" "bz2.cmx" "bz2.cmxa"
+               "bz2.mli" "bz2.cmi" "bz2.cmti"
+               "bz2.cmt" "bz2.cmx"
+               "bz2.cma" "bz2.cmxa" "bz2.a"
                "dllcamlbz2.dll" "libcamlbz2.a"]
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "bz2"]]
