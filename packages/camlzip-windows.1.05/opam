@@ -1,0 +1,25 @@
+opam-version: "1"
+maintainer: "whitequark@whitequark.org"
+patches: [
+  "patches/build-with-trunk.patch"
+  "patches/fix-install.patch"
+  "patches/cross-compilation.patch"
+]
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "all"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "allopt"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install-findlib"]
+]
+remove: [
+  ["ocamlfind" "-toolchain" "windows" "remove" "camlzip"]
+  ["ocamlfind" "-toolchain" "windows" "remove" "zip"]
+]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
+depexts: [
+  [["mxe"] ["zlib"]]
+]
