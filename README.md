@@ -63,8 +63,6 @@ Run it:
                  && ./helloworld.byte"
     wine ./helloworld.native
 
-Note that for bytecode executables,
-
 Install some packages:
 
     opam install re-windows
