@@ -102,9 +102,13 @@ Findlib 1.5.4 adds a feature that makes porting packages much simpler; namely, a
 For projects using OASIS, the following steps will work:
 
     build: [
-      ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"]
-      ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-build"]
-      ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
+      ["env" "OCAMLFIND_TOOLCHAIN=windows"
+       "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+                                       "--override" "ext_dll" ".dll"]
+      ["env" "OCAMLFIND_TOOLCHAIN=windows"
+       "ocaml" "setup.ml" "-build"]
+      ["env" "OCAMLFIND_TOOLCHAIN=windows"
+       "ocaml" "setup.ml" "-install"]
     ]
     remove: [["ocamlfind" "-toolchain" "windows" "remove" "pkg"]]
     depends: ["ocaml-windows" ...]
