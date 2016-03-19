@@ -16,7 +16,10 @@ install: [
                "dllcamlbz2.dll" "libcamlbz2.a"]
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "bz2"]]
-depends: ["ocaml-windows" "ocamlfind"]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
 depexts: [
   [["mxe"] ["bzip2"]]
 ]
