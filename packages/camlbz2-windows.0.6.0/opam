@@ -2,7 +2,7 @@ opam-version: "1"
 maintainer: "whitequark@whitequark.org"
 build: [
   ["ocamlfind" "-toolchain" "windows" "ocamlc"
-               "c_bz.c"]
+               "-ccopt" "-DBZ_PREFIX" "c_bz.c"]
   ["ocamlfind" "-toolchain" "windows" "ocamlmklib"
                "-ocamlcflags" "-bin-annot"
                "-oc" "camlbz2" "-o" "bz2" "-lbz2"
