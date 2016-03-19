@@ -117,8 +117,9 @@ install: [
                "src/png.cmt" "src/png.cmx"
                "src/oPng.mli" "src/oPng.cmi" "src/oPng.cmti"
                "src/oPng.cmt" "src/oPng.cmx"
-               "src/camlimages.cma"  "src/dllcamlimages.dll"
-               "src/camlimages.cmxa" "src/libcamlimages.a"
+               "src/camlimages.cma"
+               "src/camlimages.cmxa" "src/camlimages.a"
+               "src/dllcamlimages.dll" "src/libcamlimages.a"
   ]
 ]
 remove: [["ocamlfind" "remove" "camlimages"]]
