@@ -80,7 +80,7 @@ Build it:
 
 Make an object file out of it and link it with your native project (you'll need to call `caml_startup(argv)` to run OCaml code; see [this article](http://www.mega-nerd.com/erikd/Blog/CodeHacking/Ocaml/calling_ocaml.html)):
 
-    ocamlfind -toolchain windows ocamlopt -package re.pcre -linkpkg -output-obj test_pcre.ml -o test_pcre.o
+    ocamlfind -toolchain windows ocamlopt -package re.pcre -linkpkg -output-complete-obj test_pcre.ml -o test_pcre.o
 
 Make a DLL out of it:
 
@@ -143,4 +143,4 @@ All files contained in this repository are licensed under the [CC0 1.0 Universal
 References
 ----------
 
-See also [ocaml-cross-android](https://github.com/whitequark/ocaml-cross-android).
+See also [ocaml-cross-android](https://github.com/whitequark/ocaml-cross-android) and [ocaml-cross-ios](https://github.com/whitequark/ocaml-cross-ios).
