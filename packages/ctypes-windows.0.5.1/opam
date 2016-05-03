@@ -17,3 +17,6 @@ depends: [
   "ocaml-windows"
   "ocamlfind" {build}
 ]
+depexts: [
+  [["mxe"] ["libffi"]]
+]
