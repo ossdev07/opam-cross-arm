@@ -7,7 +7,7 @@ build: [
   [make "OCAMLFIND=ocamlfind -toolchain windows" "HOSTOCAMLFIND=ocamlfind"]
 ]
 install: [
-  [make "install"]
+  [make "OCAMLFIND=ocamlfind -toolchain windows" "install"]
 ]
 remove: [
   ["ocamlfind" "-toolchain" "windows" "remove" "ctypes"]
