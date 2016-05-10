@@ -26,4 +26,4 @@ depends: [
 conflicts: [
   "ocaml-windows32"
 ]
-available: [ ocaml-version = "4.02.3" & arch = "x86_64" ]
+available: [ (compiler = "4.02.3" & arch = "x86_64") ]
