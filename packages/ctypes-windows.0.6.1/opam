@@ -1,6 +1,5 @@
 opam-version: "1.2"
 maintainer: "whitequark@whitequark.org"
-patches: ["patches/cross-compilation.patch"]
 build: [
   ["sh" "-c" "echo \"libffi_opt=$(%{conf-gcc-windows:prefix}%pkg-config --cflags libffi)\" >>libffi.config"]
   ["sh" "-c" "echo \"libffi_lib=$(%{conf-gcc-windows:prefix}%pkg-config --libs libffi)\" >>libffi.config"]

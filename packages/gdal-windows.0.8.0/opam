@@ -1,0 +1,14 @@
+opam-version: "1"
+maintainer: "whitequark@whitequark.org"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-build"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
+]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "gdal"]]
+depends: [
+  "ocaml-windows"
+  "ctypes-windows"
+  "ocamlfind" {build}
+]
