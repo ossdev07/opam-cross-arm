@@ -6,7 +6,7 @@ build: [
   ["sh" "-c" "echo \"c-include: \\\"$(readlink -f $(dirname $(%{conf-gcc-windows32:prefix}%gcc -print-file-name=libkernel32.a))/../include)\\\"\" >>conf-gcc-windows.config"] {conf-gcc-windows32:installed}
   ["sh" "-c" "echo \"c-lib: \\\"$(readlink -f $(dirname $(%{conf-gcc-windows32:prefix}%gcc -print-file-name=libkernel32.a)))\\\"\" >>conf-gcc-windows.config"] {conf-gcc-windows32:installed}
   # 64-bit
-  ["sh" "-c" "echo \"prefix: \\\"%{conf-gcc-windows32:prefix}%\\\"\" >conf-gcc-windows.config"] {conf-gcc-windows64:installed}
+  ["sh" "-c" "echo \"prefix: \\\"%{conf-gcc-windows64:prefix}%\\\"\" >conf-gcc-windows.config"] {conf-gcc-windows64:installed}
   ["sh" "-c" "echo \"c-include: \\\"$(readlink -f $(dirname $(%{conf-gcc-windows64:prefix}%gcc -print-file-name=libkernel32.a))/../include)\\\"\" >>conf-gcc-windows.config"] {conf-gcc-windows64:installed}
   ["sh" "-c" "echo \"c-lib: \\\"$(readlink -f $(dirname $(%{conf-gcc-windows64:prefix}%gcc -print-file-name=libkernel32.a)))\\\"\" >>conf-gcc-windows.config"] {conf-gcc-windows64:installed}
 ]
