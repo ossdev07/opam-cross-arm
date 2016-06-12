@@ -15,8 +15,8 @@ depends: [
 build:
 [
   [ "ocaml" "pkg/git.ml" ]
-  [ "env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "pkg/build.ml"
-    "native=%{ocaml-native}%" "native-dynlink=%{ocaml-native-dynlink}%"]
+  [ "env" "OCAMLFIND_TOOLCHAIN=windows"
+    "ocaml" "pkg/build.ml" "native=true" "native-dynlink=true"]
 ]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "react.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "react"]]
