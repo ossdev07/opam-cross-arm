@@ -12,3 +12,6 @@ depends: [
   "ctypes-windows"
   "ocamlfind" {build}
 ]
+depexts: [
+  [["mxe"] ["gdal"]]
+]
