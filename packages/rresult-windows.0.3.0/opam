@@ -18,8 +18,7 @@ build:
 [
   [ "ocaml" "pkg/git.ml" ]
   [ "env" "OCAMLFIND_TOOLCHAIN=windows"
-    "ocaml" "pkg/build.ml" "native=%{ocaml-native}%"
-                           "native-dynlink=%{ocaml-native-dynlink}%"]
+    "ocaml" "pkg/build.ml" "native=true" "native-dynlink=true"]
 ]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "rresult.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "rresult"]]
