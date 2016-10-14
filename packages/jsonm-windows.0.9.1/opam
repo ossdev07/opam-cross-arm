@@ -1,0 +1,17 @@
+opam-version: "1.2"
+maintainer: "Pierre Boutillier <pierre.boutillier@laposte.net>"
+authors: ["Daniel Bünzli <daniel.buenzli at erratique.ch>"]
+homepage: "http://erratique.ch/software/jsonm"
+license: "BSD3"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-build"]
+]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "jsonm"]]
+depends: [
+  "ocaml-windows"
+  "ocamlfind"
+  "uutf-windows"
+  "ocamlbuild" {build}
+]
+install: ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocaml" "setup.ml" "-install"]
