@@ -1,0 +1,23 @@
+opam-version: "1.2"
+maintainer: "Pierre Boutillier <pierre.boutillier@laposte.net>"
+authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
+homepage: "http://erratique.ch/software/uutf"
+doc: "http://erratique.ch/software/uutf/doc/Uutf"
+dev-repo: "http://erratique.ch/repos/uutf.git"
+bug-reports: "https://github.com/dbuenzli/uutf/issues"
+tags: [ "unicode" "text" "utf-8" "utf-16" "codec" "org:erratique" ]
+license: "BSD3"
+depends: [
+  "ocaml-windows"
+  "ocamlfind"
+  "ocamlbuild" {build}
+]
+build:
+[
+  [ "ocaml" "pkg/git.ml" ]
+  [ "env" "OCAMLFIND_TOOLCHAIN=windows"
+    "ocaml" "pkg/build.ml" "native=true" "native-dynlink=true"
+    "cmdliner=false" ]
+]
+install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "uutf.install"]]
+remove: [["ocamlfind" "-toolchain" "windows" "remove" "uutf"]]
