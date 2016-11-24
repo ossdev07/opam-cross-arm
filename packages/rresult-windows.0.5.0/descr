@@ -7,4 +7,3 @@ available from OCaml 4.03 in the standard library.
 
 Rresult depends on the compatibility `result` package and is
 distributed under the BSD3 license.
-

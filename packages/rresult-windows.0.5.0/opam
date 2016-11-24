@@ -6,19 +6,18 @@ doc: "http://erratique.ch/software/rresult"
 dev-repo: "http://erratique.ch/repos/rresult.git"
 bug-reports: "https://github.com/dbuenzli/rresult/issues"
 tags: [ "result" "error" "declarative" "org:erratique" ]
-license: "BSD3"
+license: "ISC"
 available: [ ocaml-version >= "4.01.0"]
 depends: [
   "ocamlfind" {build}
   "ocamlbuild" {build}
+  "topkg" {build}
   "result-windows"
   "ocaml-windows"
 ]
-build:
-[
-  [ "ocaml" "pkg/git.ml" ]
-  [ "env" "OCAMLFIND_TOOLCHAIN=windows"
-    "ocaml" "pkg/build.ml" "native=true" "native-dynlink=true"]
-]
+build:[[
+  "ocaml" "pkg/pkg.ml" "build"
+          "--pinned" "%{pinned}%"
+          "--toolchain" "windows" ]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "rresult.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "rresult"]]
