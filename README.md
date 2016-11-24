@@ -31,6 +31,11 @@ Otherwise, use a regular compiler; its version must match the version of the cro
     opam switch 4.04.0
     eval `opam config env`
 
+Pin some prerequisite packages that don't yet have fixes merged upstream:
+
+    opam pin add ocamlbuild https://github.com/whitequark/ocamlbuild
+    opam pin add topkg https://github.com/whitequark/topkg
+
 Install the compiler:
 
     opam install ocaml-windows
@@ -112,19 +117,22 @@ For projects using OASIS, the following steps will work:
                                        "--override" "ext_dll" ".dll"]
       ["env" "OCAMLFIND_TOOLCHAIN=windows"
        "ocaml" "setup.ml" "-build"]
+    ]
+    install: [
       ["env" "OCAMLFIND_TOOLCHAIN=windows"
        "ocaml" "setup.ml" "-install"]
     ]
     remove: [["ocamlfind" "-toolchain" "windows" "remove" "pkg"]]
     depends: ["ocaml-windows" ...]
 
+The output of the `configure` script will be entirely wrong, referring to the host configuration rather than target configuration. Thankfully, it is not actually used in the build process itself, so it doesn't matter.
+
 For projects installing the files via OPAM's `.install` files (e.g. [topkg](https://github.com/dbuenzli/topkg)), the following steps will work:
 
+    build: [["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--toolchain" "windows" ]]
     install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "pkg.install"]]
     remove: [["ocamlfind" "-toolchain" "windows" "remove" "pkg"]]
     depends: ["ocaml-windows" ...]
-
-The output of the `configure` script will be entirely wrong, referring to the host configuration rather than target configuration. Thankfully, it is not actually used in the build process itself, so it doesn't matter.
 
 Internals
 ---------
