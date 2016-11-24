@@ -20,6 +20,9 @@ depends: [
   "conf-gcc-windows32"
   "flexdll-windows"
 ]
+depopts: [
+  "conf-flambda-windows"
+]
 conflicts: [
   "ocaml-windows64"
 ]

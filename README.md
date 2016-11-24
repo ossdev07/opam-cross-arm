@@ -36,6 +36,12 @@ Pin some prerequisite packages that don't yet have fixes merged upstream:
     opam pin add ocamlbuild https://github.com/whitequark/ocamlbuild
     opam pin add topkg https://github.com/whitequark/topkg
 
+If desired, request the compiler to be built with [flambda][] optimizers:
+
+    opam install conf-flambda-windows
+
+[flambda]: https://caml.inria.fr/pub/docs/manual-ocaml/flambda.html
+
 Install the compiler:
 
     opam install ocaml-windows
