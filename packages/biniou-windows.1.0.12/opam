@@ -2,10 +2,8 @@ opam-version: "1"
 maintainer: "whitequark@whitequark.org"
 homepage: "http://mjambon.com/biniou.html"
 license: "BSD-3-Clause"
-patches: ["patches/cross-compiling.diff"]
 build: [
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make]
-  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
+  ["env" "OCAMLFIND_TOOLCHAIN=windows" make "byte" "opt" "install"]
 ]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "biniou"]]
 depends: [
