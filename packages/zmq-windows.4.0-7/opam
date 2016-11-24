@@ -2,7 +2,8 @@ opam-version: "1.2"
 maintainer: "hez@0ok.org"
 license: "MIT"
 build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
+  ["env" "OCAMLFIND_TOOLCHAIN=windows"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/windows-sysroot"
                                    "--override" "ext_dll" ".dll"]
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
    "ocaml" "setup.ml" "-build"]
