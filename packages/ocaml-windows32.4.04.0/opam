@@ -1,9 +1,6 @@
 opam-version: "1.2"
 maintainer: "whitequark@whitequark.org"
 patches: [
-  "patches/ar-fix.patch"
-  "patches/ocamldoc.patch"
-  "patches/install_distrib.patch"
   "patches/install-ocamlrun.patch"
   "patches/ostype-fix.patch"
 ]
@@ -26,4 +23,4 @@ depends: [
 conflicts: [
   "ocaml-windows64"
 ]
-available: [ (compiler = "4.02.3" & arch = "x86") | compiler = "4.02.3+32bit" ]
+available: [ (compiler = "4.04.0" & arch = "x86") | compiler = "4.04.0+32bit" ]
