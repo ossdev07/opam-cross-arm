@@ -13,4 +13,3 @@ newfound string immutability.
 
 Astring depends only on the OCaml standard library. It is distributed
 under the BSD3 license.
-
