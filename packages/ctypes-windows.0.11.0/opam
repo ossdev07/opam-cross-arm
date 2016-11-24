@@ -3,7 +3,8 @@ maintainer: "whitequark@whitequark.org"
 build: [
   ["sh" "-c" "echo \"libffi_opt=$(%{conf-gcc-windows:prefix}%pkg-config --cflags libffi)\" >>libffi.config"]
   ["sh" "-c" "echo \"libffi_lib=$(%{conf-gcc-windows:prefix}%pkg-config --libs libffi)\" >>libffi.config"]
-  [make "OCAMLFIND=ocamlfind -toolchain windows" "HOSTOCAMLFIND=ocamlfind"]
+  [make "OCAMLFIND=ocamlfind -toolchain windows" "HOSTOCAMLFIND=ocamlfind"
+        "ctypes-base" "ctypes-stubs" "ctypes-foreign"]
 ]
 install: [
   [make "OCAMLFIND=ocamlfind -toolchain windows" "install"]
