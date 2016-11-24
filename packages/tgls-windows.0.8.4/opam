@@ -6,16 +6,12 @@ doc: "http://erratique.ch/software/tgls/doc/"
 dev-repo: "http://erratique.ch/repos/tgls.git"
 bug-reports: "https://github.com/dbuenzli/tsdl/issues"
 tags: [ "bindings" "opengl" "opengl-es" "graphics" "org:erratique" ]
-license: "BSD3"
-patches: ["patches/cross-compiling.patch"]
+license: "ISC"
 build: [
-  [ "env" "TGLS_UNAME_S=Win32"
-    "ocaml" "pkg/git.ml" ]
-  [ "env" "TGLS_UNAME_S=Win32"
-    "ocamlbuild" "-just-plugin" ]
-  [ "env" "TGLS_UNAME_S=Win32" "OCAMLFIND_TOOLCHAIN=windows"
-    "ocaml" "pkg/build.ml" "native=true" "native-dynlink=true" ]
-]
+  "env" "TGLS_HOST_OS=Win32"
+  "ocaml" "pkg/pkg.ml" "build"
+          "--pinned" "%{pinned}%"
+          "--toolchain" "windows" ]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "tgls.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "tgls"]]
 depends: [
@@ -23,5 +19,6 @@ depends: [
   "ctypes-windows" {>= "0.4.0"}
   "ocamlfind"
   "ocamlbuild" {build}
+  "topkg" {build}
   "xmlm"
 ]
