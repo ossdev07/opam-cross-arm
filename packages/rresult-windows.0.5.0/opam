@@ -16,8 +16,8 @@ depends: [
   "ocaml-windows"
 ]
 build:[[
+  "env" "TOPKG_CONF_TOOLCHAIN=android"
   "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%"
-          "--toolchain" "windows" ]]
+          "--pinned" "%{pinned}%" ]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "rresult.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "rresult"]]
