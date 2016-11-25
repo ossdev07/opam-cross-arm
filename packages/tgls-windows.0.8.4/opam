@@ -8,10 +8,10 @@ bug-reports: "https://github.com/dbuenzli/tsdl/issues"
 tags: [ "bindings" "opengl" "opengl-es" "graphics" "org:erratique" ]
 license: "ISC"
 build: [
-  "env" "TGLS_HOST_OS=Win32"
+  "env" "TOPKG_CONF_TOOLCHAIN=android"
+        "TGLS_HOST_OS=Win32"
   "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%"
-          "--toolchain" "windows" ]
+          "--pinned" "%{pinned}%"]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "tgls.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "tgls"]]
 depends: [
