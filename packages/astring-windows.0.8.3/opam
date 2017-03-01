@@ -12,8 +12,7 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build} ]
 build: [[
-  "env" "TOPKG_CONF_TOOLCHAIN=windows"
   "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%"]]
+          "--pinned" "%{pinned}%" "--toolchain" "windows"]]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "astring.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "astring"]]
