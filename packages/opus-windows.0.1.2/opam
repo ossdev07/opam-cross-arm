@@ -12,6 +12,7 @@ install: [
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" name]
 depends: [
+  "ocaml-windows"
   "ocamlfind" {build}
   "ogg-windows"
 ]

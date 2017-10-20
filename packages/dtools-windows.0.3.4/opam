@@ -11,6 +11,9 @@ install: [
    "make" "install"]
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" "dtools"]
-depends: ["ocamlfind" {build}]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
 bug-reports: "https://github.com/savonet/ocaml-dtools/issues"
 dev-repo: "https://github.com/savonet/ocaml-dtools.git"

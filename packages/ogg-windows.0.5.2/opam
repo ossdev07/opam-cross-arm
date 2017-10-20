@@ -11,7 +11,10 @@ install: [
    "make" "install"]
 ]
 remove: ["ocamlfind" "-toolchain" "windows" "remove" name]
-depends: ["ocamlfind" {build}]
+depends: [
+  "ocaml-windows"
+  "ocamlfind" {build}
+]
 depexts: [
   [["mxe"] ["ogg"]]
 ]
