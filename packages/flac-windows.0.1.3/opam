@@ -10,7 +10,7 @@ install: [
   ["env" "OCAMLFIND_TOOLCHAIN=windows"
    "make" "install"]
 ]
-remove: ["ocamlfind" "-toolchain" "windows" "remove" name]
+remove: ["ocamlfind" "-toolchain" "windows" "remove" "flac"]
 depends: [
   "ocaml-windows"
   "ocamlfind" {build}
