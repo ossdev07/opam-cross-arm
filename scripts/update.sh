@@ -5,7 +5,12 @@
 ${DRY_RUN} git reset --hard HEAD
 ${DRY_RUN} opam update ${SUFFIX}
 
-for pkg in packages/*; do
+PACKAGES=$*
+if [ -z "${PACKAGES}" ]; then
+  PACKAGES=packages/*
+fi
+
+for pkg in ${PACKAGES}; do
   pkgcur=${pkg/-${SUFFIX}/}
   pkgname=${pkgcur/.*/}
   if ! [ -e "${UPSTREAM}/${pkgname}" ]; then
@@ -15,10 +20,11 @@ for pkg in packages/*; do
   if [ "${pkgcur}" != "${pkgupstream}" ]; then
     vercur=$(sed 's/[^.]\+\.//' <<<"${pkg}")
     vernew=$(sed 's/[^.]\+\.//' <<<"${pkgupstream}")
-    echo -e "$(printf "%20s" ${pkgname}) ${vercur} -> ${vernew}"
+    echo -e "UPDATING: $(printf "%20s" ${pkgname}) ${vercur} -> ${vernew}"
 
     pkgnew=${pkgupstream/./-${SUFFIX}.}
     ${DRY_RUN} git mv ${pkg} ${pkgnew}
+    diff -u ${UPSTREAM}/${pkgname}/${pkgupstream/packages\//}/opam ${pkgnew}/opam || true
     ${DRY_RUN} cp ${UPSTREAM}/${pkgname}/${pkgupstream/packages\//}/url ${pkgnew}/url
     ${DRY_RUN} git add ${pkgnew}/url
 
@@ -28,5 +34,9 @@ for pkg in packages/*; do
     ${DRY_RUN} opam update ${SUFFIX}
     ${DRY_RUN} opam install -y ${specnew}
     ${DRY_RUN} git commit -m "${speccur/.*/}.{${vercur}→${vernew}}"
+
+    if [ -n "${ONLY_ONE}" ]; then
+      break
+    fi
   fi
 done
