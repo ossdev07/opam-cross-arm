@@ -1,4 +1,4 @@
-FROM dockcross/windows-x86
+FROM dockcross/windows-x64
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 RUN apt-get update && apt-get install -y --force-yes gawk aspcud
@@ -10,7 +10,7 @@ RUN curl -kL https://raw.github.com/hcarty/ocamlbrew/master/ocamlbrew-install | 
 
 ENV PATH=/home/opam/ocamlbrew/ocaml-4.05.0/bin:$PATH
 
-RUN opam init --auto --compiler=4.04.0+32bit
+RUN opam init --auto --compiler=4.04.0
 
 RUN opam pin --no-action add topkg https://github.com/whitequark/topkg.git
 
@@ -26,6 +26,6 @@ USER opam
 
 RUN opam repository add windows /home/opam/opam-cross-windows
 
-ENV TOOLPREF32=/usr/src/mxe/usr/bin/i686-w64-mingw32.static-
+ENV TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static-
 
 RUN eval $(opam config env) && opam install -y ocaml-windows
