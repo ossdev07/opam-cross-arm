@@ -1,4 +1,4 @@
-FROM ocamlcross/windows-x86-base:latest
+FROM ocamlcross/windows-x64-base:latest
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 ARG OPAM_SKIPPED

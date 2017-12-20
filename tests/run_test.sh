@@ -5,7 +5,7 @@ PACKAGE=$1
 
 printf "Building ${PACKAGE}.. "
 
-DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x86-test --no-cache --build-arg \"OPAM_PKG=${PACKAGE}\" . 2>/dev/null"
+DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-test --no-cache --build-arg \"OPAM_PKG=${PACKAGE}\" . 2>/dev/null"
 
 if [ -n "${VERBOSE}" ]; then
   echo ""
@@ -24,7 +24,7 @@ fi
 if [ -n "${REVDEPS}" ]; then
   printf "Building ${PACKAGE} reverse dependencies.. "
 
-  DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x86-revdeps --no-cache --build-arg \"OPAM_PKG=${PACKAGE}\" . 2>/dev/null"
+  DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-revdeps --no-cache --build-arg \"OPAM_PKG=${PACKAGE}\" . 2>/dev/null"
 
   if [ -n "${VERBOSE}" ]; then
     echo ""

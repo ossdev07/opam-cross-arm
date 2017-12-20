@@ -24,7 +24,6 @@ depends: [
 ]
 depopts: [
   "conf-flambda-windows"
-  "conf-spacetime-windows"
 ]
 conflicts: [
   "ocaml-windows64"
