@@ -11,4 +11,6 @@ RUN chown -R opam /home/opam/opam-cross-windows
 
 USER opam
 
+RUN opam pin --no-action add topkg https://github.com/whitequark/topkg.git
+
 RUN opam update windows
