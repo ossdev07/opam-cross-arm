@@ -1,7 +1,7 @@
 opam-cross-windows
 ==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml 4.04.0, as well as some commonly used packages.
+This repository contains an up-to-date Windows toolchain featuring OCaml 4.04.2, as well as some commonly used packages.
 
 The supported build systems are 32-bit and 64-bit x86 Linux. The supported target systems are 32-bit and 64-bit x86 Windows.
 
@@ -23,17 +23,16 @@ Add this repository to OPAM:
 
 On 64-bit build systems, switch to 32-bit compiler when compiling for 32-bit targets:
 
-    opam switch 4.04.0+32bit
+    opam switch 4.04.2+32bit
     eval `opam config env`
 
 Otherwise, use a regular compiler; its version must match the version of the cross-compiler:
 
-    opam switch 4.04.0
+    opam switch 4.04.2
     eval `opam config env`
 
 Pin some prerequisite packages that don't yet have fixes merged upstream:
 
-    opam pin add ocamlbuild https://github.com/ocaml/ocamlbuild.git
     opam pin add topkg https://github.com/whitequark/topkg.git
 
 If desired, request the compiler to be built with [flambda][] optimizers:
@@ -135,7 +134,7 @@ The output of the `configure` script will be entirely wrong, referring to the ho
 
 For projects installing the files via OPAM's `.install` files (e.g. [topkg](https://github.com/dbuenzli/topkg)), the following steps will work:
 
-    build: [["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--toolchain" "windows" ]]
+    build: [["ocaml" "pkg/pkg.ml" "build" "--toolchain" "windows" ]]
     install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "pkg.install"]]
     remove: [["ocamlfind" "-toolchain" "windows" "remove" "pkg"]]
     depends: ["ocaml-windows" ...]
