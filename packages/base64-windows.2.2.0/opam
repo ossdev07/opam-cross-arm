@@ -9,9 +9,10 @@ doc: "http://mirage.github.io/ocaml-base64/"
 bug-reports: "https://github.com/mirage/ocaml-base64/issues"
 dev-repo: "https://github.com/mirage/ocaml-base64.git"
 depends: [
-  "ocamlbuild" {build}
-  "topkg" {build}
+  "base-bytes"
+  "jbuilder-windows" {build & >= "1.0+beta10"}
 ]
-build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--toolchain" "windows" "--tests" "false" ]
-install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "base64.install"]]
-remove: [["ocamlfind" "-toolchain" "windows" "remove" "base64"]]
+build: [
+  ["jbuilder-windows" "build" "--install-prefix" "windows-sysroot"
+                      "-p" "base64" "-j" jobs "-x" "windows"]
+]
