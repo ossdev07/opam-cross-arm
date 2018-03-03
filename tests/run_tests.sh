@@ -22,10 +22,13 @@ if [ -n "${BUILD_BASE}" ]; then
   fi
 fi
 
-SKIPPED="ao-windows.0.2.1 ocaml-windows32.4.04.0 conf-gcc-windows64.1 lwt-zmq-windows.2.0.1 zmq-windows.4.0-7"
+# compiler packages are already present in the base image and should never be rebuilt
+SKIPPED="ocaml-windows32.4.04.2 conf-gcc-windows64.1"
+# these packages just fail
+SKIPPED="${SKIPPED} lwt-zmq-windows.2.0.1 zmq-windows.4.0-7"
 
 printf "Building pretest image.."
-DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:latest --build-arg \"OPAM_SKIPPED=${SKIPPED}\" ${BASE_PWD}"
+DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:latest ${BASE_PWD}"
 
 if [ -n "${VERBOSE}" ]; then
   echo ""

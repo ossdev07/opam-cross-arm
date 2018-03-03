@@ -10,7 +10,7 @@ RUN curl -kL https://raw.github.com/hcarty/ocamlbrew/master/ocamlbrew-install | 
 
 ENV PATH=/home/opam/ocamlbrew/ocaml-4.05.0/bin:$PATH
 
-RUN opam init --auto --compiler=4.04.0
+RUN opam init --auto --compiler=4.04.2
 
 RUN opam pin --no-action add topkg https://github.com/whitequark/topkg.git
 

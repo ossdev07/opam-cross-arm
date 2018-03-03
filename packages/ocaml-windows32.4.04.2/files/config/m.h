@@ -1,7 +1,7 @@
-#define ARCH_SIXTYFOUR
+#undef ARCH_SIXTYFOUR
 #define SIZEOF_INT 4
 #define SIZEOF_LONG 4
-#define SIZEOF_PTR 8
+#define SIZEOF_PTR 4
 #define SIZEOF_SHORT 2
 #define SIZEOF_LONGLONG 8
 #define ARCH_INT64_TYPE long long
@@ -13,3 +13,4 @@
 #undef NONSTANDARD_DIV_MOD
 #undef ASM_CFI_SUPPORTED
 #define PROFINFO_WIDTH 26
+#define INT64_LITERAL(s) s ## LL
