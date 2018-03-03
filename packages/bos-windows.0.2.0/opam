@@ -14,7 +14,7 @@ depends: [
   "rresult-windows"
   "astring-windows"
   "fpath-windows"
-  "fmt-windows"
+  "fmt-windows" {>= "0.8.0"}
   "logs-windows"
   "ocaml-windows"
 ]
