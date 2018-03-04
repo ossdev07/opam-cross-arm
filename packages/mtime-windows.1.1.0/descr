@@ -9,4 +9,3 @@ JavaScript support depends on [js_of_ocaml][1]. It is distributed
 under the BSD3 license.
 
 [1]: http://ocsigen.org/js_of_ocaml/
-
