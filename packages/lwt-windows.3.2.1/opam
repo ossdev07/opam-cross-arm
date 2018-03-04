@@ -1,0 +1,38 @@
+opam-version: "1.2"
+version: "2.6.0"
+maintainer: [
+  "Anton Bachin <antonbachin@yahoo.com>"
+  "Mauricio Fernandez <mfp@acm.org>"
+  "Simon Cruanes <simon.cruanes.2007@m4x.org>"
+]
+authors: [
+  "Jérôme Vouillon"
+  "Jérémie Dimino"
+]
+homepage: "https://github.com/ocsigen/lwt"
+doc: "https://ocsigen.org/lwt/manual/"
+bug-reports: "https://github.com/ocsigen/lwt/issues"
+license: "LGPL with OpenSSL linking exception"
+dev-repo: "https://github.com/ocsigen/lwt.git"
+patches: [
+  # windows-ocamlc -config has incorrect os_type
+  "patches/os_type.patch"
+]
+build: [
+  [ "ocaml" "src/util/configure.ml" "-use-libev" "false" ]
+  [ "jbuilder-windows" "build"
+                       "--install-prefix" "windows-sysroot" "-x" "windows"
+                       "-p" "lwt" "-j" jobs ]
+  [ "sed" "-r" "-e" "s!(-sysroot/lib/lwt/)(unix|preemptive|log|options|syntax|simple-top|ppx)/!\\1!" "-i" "lwt-windows.install" ]
+]
+depends: [
+  "ocamlfind" {build}
+  "cppo" {build & >= "1.1.0"}
+  "ocaml-windows"
+  "jbuilder-windows" {build & >= "1.0+beta14"}
+  "ocaml-migrate-parsetree-windows"
+  "ppx_tools_versioned" {>= "5.0.1"}
+  "ppx_tools_versioned-windows" {>= "5.0.1"}
+  # result is needed as long as Lwt still supports OCaml 4.02.
+  "result-windows"
+]
