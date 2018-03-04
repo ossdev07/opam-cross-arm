@@ -25,7 +25,7 @@ fi
 # compiler packages are already present in the base image and should never be rebuilt
 SKIPPED="ocaml-windows32.4.04.2 ocaml-windows64.4.04.2 ocaml-windows.4.04.2 conf-gcc-windows64.1"
 # these packages just fail
-SKIPPED="${SKIPPED} lwt-zmq-windows.2.0.1 zmq-windows.4.0-7"
+SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
 
 printf "Building pretest image.."
 DOCKER_CMD="docker build -f ${TEST_PWD}/Dockerfile.windows-x64-pretest -t ocamlcross/windows-x64-pretest:latest ${BASE_PWD}"
