@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 . $(dirname $0)/config.sh
+[ -e $(dirname $0)/local.sh ] && . $(dirname $0)/local.sh
 
 ${DRY_RUN} git reset --hard HEAD
 ${DRY_RUN} opam update ${SUFFIX}
@@ -14,6 +15,9 @@ for pkg in ${PACKAGES}; do
   pkgcur=${pkg/-${SUFFIX}/}
   pkgname=${pkgcur/.*/}
   if ! [ -e "${UPSTREAM}/${pkgname}" ]; then
+    continue
+  fi
+  if echo "${SKIP_PACKAGES}" | grep "${pkg/packages\//}"; then
     continue
   fi
   pkgupstream=packages/`(cd ${UPSTREAM}/${pkgname} && ls) | sort -rV | head -n1`
