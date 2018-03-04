@@ -12,22 +12,18 @@ depends: [
   "ocamlbuild" {build}
   "topkg" {build & >= "0.7.5"}
   "result-windows"
+  "uchar-windows"
   "ocaml-windows"
 ]
 depopts: [
   "cmdliner-windows"
 ]
 build: [
-  "ocaml"
-  "pkg/pkg.ml"
-  "build"
-  "--pinned"
-  "%{pinned}%"
-  "--with-base-unix"
-  "true"
-  "--with-cmdliner"
-  "%{cmdliner-windows:installed}%"
-  "--toolchain" "windows"
+  "ocaml" "pkg/pkg.ml" "build"
+                       "--pinned" "%{pinned}%"
+                       "--with-base-unix" "true"
+                       "--with-cmdliner" "%{cmdliner-windows:installed}%"
+                       "--toolchain" "windows"
 ]
 install: [["opam-installer" "--prefix=%{prefix}%/windows-sysroot" "fmt.install"]]
 remove: [["ocamlfind" "-toolchain" "windows" "remove" "fmt"]]
