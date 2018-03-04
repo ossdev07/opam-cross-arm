@@ -38,6 +38,7 @@ for pkg in ${PACKAGES}; do
     ${DRY_RUN} opam update ${SUFFIX}
     ${DRY_RUN} opam install -y ${specnew}
     ${DRY_RUN} git commit -m "${speccur/.*/}.{${vercur}→${vernew}}"
+    ${DRY_RUN} opam remove -y ${specnew} -a
 
     if [ -n "${ONLY_ONE}" ]; then
       break
