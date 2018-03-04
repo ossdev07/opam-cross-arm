@@ -1,7 +1,8 @@
 opam-version: "1.2"
-version: "1.0.1"
 maintainer: [
-  "Pierre Boutillier <pierre.boutillier@laposte.net>"
+  "Anton Bachin <antonbachin@yahoo.com>"
+  "Mauricio Fernandez <mfp@acm.org>"
+  "Simon Cruanes <simon.cruanes.2007@m4x.org>"
 ]
 authors: [
   "Jérémie Dimino"
@@ -11,17 +12,12 @@ doc: "https://ocsigen.org/lwt/manual/"
 dev-repo: "https://github.com/ocsigen/lwt.git"
 bug-reports: "https://github.com/ocsigen/lwt/issues"
 license: "LGPL with OpenSSL linking exception"
-build: [
-    ["env" "OCAMLFIND_TOOLCHAIN=windows" make "configure"]
-    ["env" "OCAMLFIND_TOOLCHAIN=windows" make "build"]
-]
-install: [
-    ["env" "OCAMLFIND_TOOLCHAIN=windows" make "install"]
-]
-remove: [
-    ["env" "OCAMLFIND_TOOLCHAIN=windows" "ocamlfind" "remove" "lwt_react"]
-]
 depends: [
+  "jbuilder-windows" {build & >= "1.0+beta10"}
   "lwt-windows" {>= "3.0.0"}
   "react-windows" {>= "1.0.0"}
 ]
+build: [[
+  "jbuilder-windows" "build"
+                     "--install-prefix" "windows-sysroot" "-x" "windows"
+                     "-p" "lwt_react" "-j" jobs]]
