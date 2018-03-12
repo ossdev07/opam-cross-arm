@@ -5,7 +5,7 @@ This repository contains an up-to-date Windows toolchain featuring OCaml 4.06.1,
 
 The supported build systems are 32-bit and 64-bit x86 Linux. The supported target systems are 32-bit and 64-bit x86 Windows.
 
-If you need support for other platforms or versions, please [open an issue](https://github.com/whitequark/opam-cross-windows/issues).
+If you need support for other platforms or versions, please [open an issue](https://github.com/ocaml-cross/opam-cross-windows/issues).
 
 Prerequisites
 -------------
@@ -19,7 +19,7 @@ Installation
 
 Add this repository to OPAM:
 
-    opam repository add windows git://github.com/whitequark/opam-cross-windows
+    opam repository add windows git://github.com/ocaml-cross/opam-cross-windows
 
 On 64-bit build systems, switch to 32-bit compiler when compiling for 32-bit targets:
 
