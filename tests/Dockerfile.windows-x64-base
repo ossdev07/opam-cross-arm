@@ -1,33 +1,30 @@
 FROM dockcross/windows-x64
 MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
-RUN apt-get update && apt-get install -y --force-yes gawk aspcud
+RUN apt-get update && apt-get install -y --force-yes gawk aspcud bubblewrap
+
+# For lame
+RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && apt-get install -y --force-yes automake
 
 WORKDIR /usr/src/mxe
 RUN git pull origin master
 RUN make cc
 
+RUN wget https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh -O /tmp/install.sh && echo /usr/local/bin | sh /tmp/install.sh
+
 RUN useradd -g staff --create-home opam
-USER opam
-
-RUN curl -kL https://raw.github.com/hcarty/ocamlbrew/master/ocamlbrew-install | env CC=gcc OCAMLBREW_FLAGS="-r" bash
-
-ENV PATH=/home/opam/ocamlbrew/ocaml-4.05.0/bin:$PATH
-
-RUN opam init --auto --compiler=4.07.0
-
-WORKDIR /home/opam/opam-cross-windows
 
 ADD packages/ /home/opam/opam-cross-windows/packages
 
-USER root
-
-# For lame
-RUN sed -i /etc/apt/sources.list -e 's#jessie#testing#g' && (apt-get update || true) && apt-get install automake
+ADD repo /home/opam/opam-cross-windows/repo
 
 RUN chown -R opam /home/opam/opam-cross-windows
 
 USER opam
+
+WORKDIR /home/opam/opam-cross-windows
+
+RUN opam init --auto --compiler=4.07.0 --disable-sandboxing
 
 RUN opam repository add windows /home/opam/opam-cross-windows
 
