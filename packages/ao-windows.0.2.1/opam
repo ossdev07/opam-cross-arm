@@ -25,5 +25,5 @@ url {
   checksum: "md5=7f763e8c47e8369274ee400c640532d4"
 }
 depexts: [
-  [["mxe"] ["dlfcn-win32" "libao"]]
+  ["dlfcn-win32" "libao"] {os-distribution = "mxe"}
 ]

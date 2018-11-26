@@ -23,5 +23,5 @@ url {
   src: "git+https://github.com/whitequark/ocaml-expat"
 }
 depexts: [
-  [["mxe"] ["expat"]]
+  ["expat"] {os-distribution = "mxe"}
 ]

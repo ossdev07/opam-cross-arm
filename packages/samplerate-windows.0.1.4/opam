@@ -27,5 +27,5 @@ url {
   checksum: "md5=d1d893965ba6f4e83054574447da9e00"
 }
 depexts: [
-  [["mxe"] ["libsamplerate"]]
+  ["libsamplerate"] {os-distribution = "mxe"}
 ]

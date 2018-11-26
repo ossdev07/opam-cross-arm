@@ -30,5 +30,5 @@ url {
   checksum: "md5=fff652fa282b4954d2f504ca1c2a70e9"
 }
 depexts: [
-  [["mxe"] ["fdk-aac"]]
+  ["fdk-aac"] {os-distribution = "mxe"}
 ]

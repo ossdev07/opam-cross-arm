@@ -36,5 +36,5 @@ url {
   checksum: "md5=b64662bf47f2973f836d33ae1365244f"
 }
 depexts: [
-  [["mxe"] ["freeglut"]]
+  ["freeglut"] {os-distribution = "mxe"}
 ]

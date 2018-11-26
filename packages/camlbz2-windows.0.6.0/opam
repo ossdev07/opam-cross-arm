@@ -29,5 +29,5 @@ url {
   checksum: "md5=7a1cf822b3fe0ef57df4f8ebd86cac99"
 }
 depexts: [
-  [["mxe"] ["bzip2"]]
+  ["bzip2"] {os-distribution = "mxe"}
 ]

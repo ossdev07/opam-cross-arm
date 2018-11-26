@@ -52,5 +52,5 @@ url {
   checksum: "md5=20aa5fe2bc8c4c507593dd25edf1e02d"
 }
 depexts: [
-  [["mxe"] ["libffi"]]
+  ["libffi"] {os-distribution = "mxe"}
 ]

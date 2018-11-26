@@ -32,5 +32,5 @@ url {
   checksum: "md5=fc7b7b092c38bdbdb0b679ff3af2ff68"
 }
 depexts: [
-  [["mxe"] ["pcre"]]
+  ["pcre"] {os-distribution = "mxe"}
 ]

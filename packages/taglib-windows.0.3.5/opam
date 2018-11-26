@@ -27,5 +27,5 @@ url {
   checksum: "md5=a6cc64da45be4a078118660019e320c8"
 }
 depexts: [
- [["mxe"] ["taglib"]]
+ ["taglib"] {os-distribution = "mxe"}
 ]

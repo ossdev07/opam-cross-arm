@@ -27,5 +27,5 @@ url {
   checksum: "md5=f3dc890ea043cbf763015ab989984781"
 }
 depexts: [
-  [["mxe"] ["gstreamer" "gst-plugins-base"]]
+  ["gstreamer" "gst-plugins-base"] {os-distribution = "mxe"}
 ]

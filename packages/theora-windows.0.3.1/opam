@@ -28,5 +28,5 @@ url {
   checksum: "md5=1a5de0e6254178db0da10e96d4d6d13f"
 }
 depexts: [
-  [["mxe"] ["theora"]]
+  ["theora"] {os-distribution = "mxe"}
 ]

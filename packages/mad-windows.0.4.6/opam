@@ -27,5 +27,5 @@ url {
   checksum: "md5=c9a7e78495d074df11f7c86af1f54fbd"
 }
 depexts: [
-  [["mxe"] ["libmad"]]
+  ["libmad"] {os-distribution = "mxe"}
 ]

@@ -27,5 +27,5 @@ url {
   checksum: "md5=c504a0d47c1aa834b774b9c668b65691"
 }
 depexts: [
-  [["mxe"] ["portaudio"]]
+  ["portaudio"] {os-distribution = "mxe"}
 ]
