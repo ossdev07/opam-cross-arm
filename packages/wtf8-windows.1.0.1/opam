@@ -12,7 +12,7 @@ depends:
   "jbuilder" {build & >= "1.0+beta7"}
 ]
 depopts: []
-build: [["jbuilder" "build" "-p" name "-j" jobs "-x" "windows"]]
+build: [["jbuilder" "build" "-p" "wtf8" "-j" jobs "-x" "windows"]]
 synopsis: "For OCaml"
 description: """"""
 url {
