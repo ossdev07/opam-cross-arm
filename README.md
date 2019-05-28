@@ -1,7 +1,7 @@
 opam-cross-arm
 ==================
 
-This repository contains an up-to-date Windows toolchain featuring OCaml 4.07.0, as well as some commonly used packages.
+This repository contains an up-to-date Arm toolchain featuring OCaml 4.07.0, as well as some commonly used packages.
 
 The supported build systems are 32-bit and 64-bit x86 Linux. The supported target systems are 32-bit and 64-bit x86 Arm.
 
@@ -19,7 +19,7 @@ Installation
 
 Add this repository to OPAM:
 
-    opam repository add arm git://github.com/ocaml-cross/opam-cross-arm
+    opam repository add arm git://github.com/ossdev07/opam-cross-arm
 
 On 64-bit build systems, switch to 32-bit compiler when compiling for 32-bit targets:
 
