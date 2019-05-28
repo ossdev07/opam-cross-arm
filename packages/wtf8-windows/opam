@@ -15,4 +15,10 @@ depends:
 ]
 depopts: []
 build: [["jbuilder" "build" "-p" name "-j" jobs "-x" "windows"]]
-build-test: [["jbuilder" "runtest" "-p" name "-j" jobs "-x" "windows"]]
+synopsis: "For OCaml"
+description: """"""
+url {
+  src:
+    "https://github.com/flowtype/ocaml-wtf8/releases/download/v1.0.1/wtf8-1.0.1.tbz"
+  checksum: "md5=843fb4ee0d36b22c4ad1f2fb28afe8f8"
+}
