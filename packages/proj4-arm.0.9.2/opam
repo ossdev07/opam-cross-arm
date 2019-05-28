@@ -1,0 +1,29 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/arm-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   "ocaml" "setup.ml" "-build"]
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [["ocamlfind" "-toolchain" "arm" "remove" "proj4"]]
+depends: [
+  "ocaml"
+  "ocaml-arm"
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+]
+synopsis: "Bindings to the PROJ.4 projection library"
+description: """
+This library provides access to the PROJ.4 geographic coordinate
+projection/transformation library (http://trac.osgeo.org/proj/)."""
+flags: light-uninstall
+url {
+  src: "https://github.com/hcarty/proj4ml/archive/v0.9.2.tar.gz"
+  checksum: "md5=55e95fc670207dd3af42ae087658c0cc"
+}
+depexts: [
+  ["proj"] {os-distribution = "mxe"}
+]

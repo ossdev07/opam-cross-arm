@@ -13,13 +13,13 @@ fi
 
 if [ "${SYSTEM_TYPE}" = "x64" ]; then
   COMPILER="${OCAML_VERSION}"
-  IMAGE="dockcross/windows-x64"
+  IMAGE="dockcross/arm-x64"
 else
   COMPILER="${OCAML_VERSION}+32bit"
-  IMAGE="dockcross/windows-x86"
+  IMAGE="dockcross/arm-x86"
 fi
 
-BASE_IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
+BASE_IMAGE="ocamlcross/arm-${SYSTEM_TYPE}-base:${OCAML_VERSION}"
 
 if [ -n "${BUILD_BASE}" ]; then
   printf "Building ${BASE_IMAGE}.. "
@@ -45,11 +45,11 @@ if [ -n "${BUILD_BASE}" ]; then
 fi
 
 # compiler packages are already present in the base image and should never be rebuilt
-SKIPPED="ocaml-windows32.${OCAML_VERSION} ocaml-windows64.${OCAML_VERSION} ocaml-windows.${OCAML_VERSION} conf-gcc-windows64.1"
+SKIPPED="ocaml-arm32.${OCAML_VERSION} ocaml-arm64.${OCAML_VERSION} ocaml-arm.${OCAML_VERSION} conf-gcc-arm64.1"
 # these packages just fail
-SKIPPED="${SKIPPED} lwt-zmq-windows.2.1.0 zmq-windows.4.0-7"
+SKIPPED="${SKIPPED} lwt-zmq-arm.2.1.0 zmq-arm.4.0-7"
 
-PRETEST_IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
+PRETEST_IMAGE="ocamlcross/arm-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
 
 printf "Building ${PRETEST_IMAGE}.."
 DOCKER_CMD="docker build --no-cache -f ${TEST_PWD}/Dockerfile.pretest \

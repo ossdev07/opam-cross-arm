@@ -11,7 +11,7 @@ if [ -z "${OCAML_VERSION}" ]; then
   OCAML_VERSION="4.07.0"
 fi
 
-IMAGE="ocamlcross/windows-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
+IMAGE="ocamlcross/arm-${SYSTEM_TYPE}-pretest:${OCAML_VERSION}"
 
 printf "Building ${PACKAGE} using ${IMAGE}.. "
 

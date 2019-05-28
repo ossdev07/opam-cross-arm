@@ -16,28 +16,28 @@ RUN wget https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh -O
 
 RUN useradd -g staff --create-home opam
 
-ADD packages/ /home/opam/opam-cross-windows/packages
+ADD packages/ /home/opam/opam-cross-arm/packages
 
-ADD repo /home/opam/opam-cross-windows/repo
+ADD repo /home/opam/opam-cross-arm/repo
 
-RUN chown -R opam /home/opam/opam-cross-windows
+RUN chown -R opam /home/opam/opam-cross-arm
 
 USER opam
 
-WORKDIR /home/opam/opam-cross-windows
+WORKDIR /home/opam/opam-cross-arm
 
 RUN opam init --auto --compiler=$COMPILER --disable-sandboxing
 
-RUN opam repository add windows /home/opam/opam-cross-windows
+RUN opam repository add arm /home/opam/opam-cross-arm
 
 RUN if [ "$SYSTEM" = "x64" ]; then \
-      export TOOLPREF64=/usr/src/mxe/usr/bin/x86_64-w64-mingw32.static- && \
+      export TOOLPREF64=/usr/src/mxe/usr/bin/aarch64-linux-gnu- && \
       eval $(opam env) && opam update && \
-      opam install -y ocaml-windows; \
+      opam install -y ocaml-arm; \
     fi
 
 RUN if [ "$SYSTEM" = "x86" ]; then \
-      export TOOLPREF32=/usr/src/mxe/usr/bin/i686-w64-mingw32.static- && \
+      export TOOLPREF32=/usr/src/mxe/usr/bin/arm-linux-gnueabihf- && \
       eval $(opam env) && opam update && \
-      opam install -y ocaml-windows; \
+      opam install -y ocaml-arm; \
     fi

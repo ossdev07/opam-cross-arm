@@ -1,0 +1,23 @@
+opam-version: "2.0"
+maintainer: "andre@digirati.com.br"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/arm-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   "ocaml" "setup.ml" "-build"]
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [["ocamlfind" "-toolchain" "arm" "remove" "uint"]]
+depends: [
+  "ocaml"
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+]
+synopsis: "Unsigned ints for OCaml"
+flags: light-uninstall
+url {
+  src:
+    "https://forge.ocamlcore.org/frs/download.php/1516/ocaml-uint-1.2.0.tar.gz"
+  checksum: "md5=e45a28c495cfaf9db714535c5f40876c"
+}

@@ -1,0 +1,33 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+build: [
+  ["ocamlfind" "-toolchain" "arm" "ocamlc"
+               "-ccopt" "-DBZ_PREFIX" "c_bz.c"]
+  ["ocamlfind" "-toolchain" "arm" "ocamlmklib"
+               "-ocamlcflags" "-bin-annot"
+               "-oc" "camlbz2" "-o" "bz2" "-lbz2"
+               "bz2.mli" "bz2.ml" "c_bz.o"]
+]
+install: [
+  ["ocamlfind" "-toolchain" "arm" "install"
+               "bz2" "-patch-version" version "META"
+               "bz2.mli" "bz2.cmi" "bz2.cmti"
+               "bz2.cmt" "bz2.cmx"
+               "bz2.cma" "bz2.cmxa" "bz2.a"
+               "dllcamlbz2.dll" "libcamlbz2.a"]
+]
+remove: [["ocamlfind" "-toolchain" "arm" "remove" "bz2"]]
+depends: [
+  "ocaml"
+  "ocaml-arm"
+  "ocamlfind" {build}
+]
+synopsis: "Bindings for bzip2"
+flags: light-uninstall
+url {
+  src: "https://forge.ocamlcore.org/frs/download.php/72/camlbz2-0.6.0.tar.gz"
+  checksum: "md5=7a1cf822b3fe0ef57df4f8ebd86cac99"
+}
+depexts: [
+  ["bzip2"] {os-distribution = "mxe"}
+]

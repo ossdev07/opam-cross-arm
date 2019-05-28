@@ -1,0 +1,29 @@
+opam-version: "2.0"
+maintainer: "smimram@gmail.com"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet"
+build: [
+  ["./configure" "--host=%{conf-gcc-arm:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=arm"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "arm" "remove" "ao"]
+depends: [
+  "ocaml"
+  "ocaml-arm"
+  "ocamlfind" {build}
+]
+synopsis:
+  "Bindings for the AO library which provides high-level functions for using soundcards"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-ao/releases/download/0.2.1/ocaml-ao-0.2.1.tar.gz"
+  checksum: "md5=7f763e8c47e8369274ee400c640532d4"
+}
+depexts: [
+  ["dlfcn-win32" "libao"] {os-distribution = "mxe"}
+]

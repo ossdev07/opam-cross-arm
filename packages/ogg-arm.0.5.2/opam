@@ -1,0 +1,30 @@
+opam-version: "2.0"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-ogg"
+build: [
+  ["./configure" "--host=%{conf-gcc-arm:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=arm"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "arm" "remove" "ogg"]
+depends: [
+  "ocaml" {>= "4.02"}
+  "ocaml-arm"
+  "ocamlfind" {build}
+]
+bug-reports: "https://github.com/savonet/ocaml-ogg/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-ogg.git"
+synopsis: "Interface for Ogg Bitstream Library, otherwise known as libogg"
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-ogg/releases/download/0.5.2/ocaml-ogg-0.5.2.tar.gz"
+  checksum: "md5=2f678dccf861a72213fc1a33904d88ee"
+}
+depexts: [
+  ["ogg"] {os-distribution = "mxe"}
+]

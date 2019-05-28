@@ -4,16 +4,16 @@ MAINTAINER Romain Beauxis <toots@rastageeks.org>
 
 USER root
 
-RUN rm -rf /home/opam/opam-cross-windows/packages
+RUN rm -rf /home/opam/opam-cross-arm/packages
 
-ADD packages/ /home/opam/opam-cross-windows/packages
+ADD packages/ /home/opam/opam-cross-arm/packages
 
-ADD repo /home/opam/opam-cross-windows/repo
+ADD repo /home/opam/opam-cross-arm/repo
 
-RUN chown -R opam /home/opam/opam-cross-windows
+RUN chown -R opam /home/opam/opam-cross-arm
 
 USER opam
 
 RUN opam pin --no-action add topkg https://github.com/whitequark/topkg.git
 
-RUN opam update windows
+RUN opam update arm

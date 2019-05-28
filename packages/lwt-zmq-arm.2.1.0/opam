@@ -1,0 +1,35 @@
+opam-version: "2.0"
+maintainer: "hez@0ok.org"
+authors: [ "Hezekiah M. Carty <hez@0ok.org>" ]
+license: "MIT"
+homepage: "https://github.com/hcarty/lwt-zmq"
+bug-reports: "https://github.com/hcarty/lwt-zmq/issues"
+dev-repo: "git+https://github.com/hcarty/lwt-zmq.git"
+build: [
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%/arm-sysroot"
+                                   "--override" "ext_dll" ".dll"]
+  ["ocamlbuild" "-use-ocamlfind" "-just-plugin"]
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   "ocaml" "setup.ml" "-build"]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   "ocaml" "setup.ml" "-install"]
+]
+remove: [
+  ["ocamlfind" "-toolchain" "arm" "remove" "lwt-zmq"]
+]
+depends: [
+  "ocaml" {>= "3.12.1"}
+  "ocaml-arm"
+  "lwt-arm"
+  "zmq-arm" {>= "4.0-2"}
+  "ocamlbuild" {build}
+]
+synopsis: "Lwt-friendly interface to ZeroMQ"
+flags: light-uninstall
+url {
+  src: "https://github.com/hcarty/lwt-zmq/archive/v2.1.0.tar.gz"
+  checksum: "md5=9183f16aed74035ac75c5c24271ffc66"
+}

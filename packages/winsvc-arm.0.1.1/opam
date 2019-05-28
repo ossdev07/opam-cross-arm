@@ -1,0 +1,27 @@
+opam-version: "2.0"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-winsvc"
+build: [
+  ["./configure" "--host=%{conf-gcc-arm:host}%" "--prefix=%{prefix}%" "OCAMLFIND_TOOLCHAIN=arm"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "arm" "remove" "winsvc"]
+depends: [
+  "ocaml"
+  "ocaml-arm"
+  "ocamlfind" {build}
+]
+bug-reports: "https://github.com/savonet/ocaml-winsvc/issues"
+dev-repo: "git+https://github.com/savonet/ocaml-winsvc.git"
+synopsis: "Library to make OCaml program act as a Windows service."
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-winsvc/releases/download/0.1.1/ocaml-winsvc-0.1.1.tar.gz"
+  checksum: "md5=d2d53f54fa5f7a6b0738c92aa0dd04e6"
+}

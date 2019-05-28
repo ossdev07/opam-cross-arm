@@ -1,0 +1,34 @@
+opam-version: "2.0"
+maintainer: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-fdkaac"
+bug-reports: "https://github.com/savonet/ocaml-fdkaac/issues"
+license: "GPL-2.0"
+dev-repo: "git+https://github.com/savonet/ocaml-fdkaac.git"
+build: [
+  ["./configure" "--host=%{conf-gcc-arm:host}%" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [
+  ["env" "OCAMLFIND_TOOLCHAIN=arm"
+   make "install"]
+]
+remove: ["ocamlfind" "-toolchain" "arm" "remove" "fdkaac"]
+depends: [
+  "ocaml"
+  "ocaml-arm"
+  "ocamlfind" {build}
+]
+synopsis: "Fraunhofer FDK AAC Codec Library"
+description: """
+The FDK AAC Codec Library For Android contains an encoder implementation of the
+Advanced Audio Coding (AAC) audio codec."""
+flags: light-uninstall
+url {
+  src:
+    "https://github.com/savonet/ocaml-fdkaac/releases/download/0.2.1/ocaml-fdkaac-0.2.1.tar.gz"
+  checksum: "md5=fff652fa282b4954d2f504ca1c2a70e9"
+}
+depexts: [
+  ["fdk-aac"] {os-distribution = "mxe"}
+]

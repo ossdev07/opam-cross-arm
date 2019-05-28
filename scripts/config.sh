@@ -1,2 +1,2 @@
 UPSTREAM=${UPSTREAM:-../opam-repository}
-SUFFIX=windows
+SUFFIX=arm

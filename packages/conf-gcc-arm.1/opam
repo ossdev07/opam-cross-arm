@@ -1,0 +1,8 @@
+opam-version: "2.0"
+maintainer: "whitequark@whitequark.org"
+build: [
+  ["./generate-config.sh" "%{conf-gcc-arm32:prefix}%"] {conf-gcc-arm32:installed}
+  ["./generate-config.sh" "%{conf-gcc-arm64:prefix}%"] {conf-gcc-arm64:installed}
+]
+depends: ["ocaml" "conf-gcc-arm32" | "conf-gcc-arm64"]
+extra-files: ["generate-config.sh" "md5=e48aaaad167f50d43e4574e217adbea5"]

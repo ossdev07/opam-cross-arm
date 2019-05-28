@@ -1,0 +1,22 @@
+opam-version: "2.0"
+maintainer: "Marshall Roch <mroch@fb.com>"
+authors: ["Marshall Roch <mroch@fb.com>"]
+homepage: "https://github.com/flowtype/ocaml-wtf8"
+doc: "https://github.com/flowtype/ocaml-wtf8"
+license: "MIT"
+dev-repo: "https://github.com/flowtype/ocaml-wtf8.git"
+bug-reports: "https://github.com/flowtype/ocaml-wtf8/issues"
+tags: []
+depends:
+[
+  "jbuilder" {build & >= "1.0+beta7"}
+]
+depopts: []
+build: [["jbuilder" "build" "-p" "wtf8" "-j" jobs "-x" "arm"]]
+synopsis: "For OCaml"
+description: """"""
+url {
+  src:
+    "https://github.com/flowtype/ocaml-wtf8/releases/download/v1.0.1/wtf8-1.0.1.tbz"
+  checksum: "md5=843fb4ee0d36b22c4ad1f2fb28afe8f8"
+}
